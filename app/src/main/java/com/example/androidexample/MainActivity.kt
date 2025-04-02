@@ -64,7 +64,7 @@ fun AuthorScreen(modifier: Modifier = Modifier.padding(80.dp)) {
             viewModel.getAuthor()
         }
     }
-    val author by viewModel.authorUiState.collectAsState()
+    val author by viewModel.authorData
     AuthorCard(author, modifier = Modifier.padding(16.dp))
 }
 @Composable

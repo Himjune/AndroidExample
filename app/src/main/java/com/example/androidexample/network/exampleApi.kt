@@ -11,7 +11,7 @@ interface ExampleApi {
     suspend fun getAuthor(): Author
 
     companion object RetrofitBuilder{
-        private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+        private const val BASE_URL = "https://mocki.io/v1/f1f2f233-b520-43c9-990a-4749a49dd8d0"
 
         private fun getRetrofit(): Retrofit {
             return Retrofit.Builder()
