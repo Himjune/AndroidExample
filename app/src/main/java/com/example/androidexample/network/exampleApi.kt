@@ -7,11 +7,17 @@ import retrofit2.create
 import retrofit2.http.GET
 
 interface ExampleApi {
-    @GET("author")
+    // В атрибуте GET указывается непосредственно конечная часть адреса
+    // которая присоединится при вызове к базовой части
+    // У вас это скорее будет "authors", и тогда полный адрес получится:
+    // 192.168.1.2:8000/api/authors - такой, как даст вам бекендер
+    @GET("4b24931d-5646-4d85-b14e-053e051d7de4")
     suspend fun getAuthor(): Author
 
     companion object RetrofitBuilder{
-        private const val BASE_URL = "https://mocki.io/v1/f1f2f233-b520-43c9-990a-4749a49dd8d0"
+        // Базвая часть адреса (неизменяющаяся, у вас это чаще будет 192.168.1.2:8000/api/
+        // Обязательно заканчивается на /
+        private const val BASE_URL = "https://mocki.io/v1/"
 
         private fun getRetrofit(): Retrofit {
             return Retrofit.Builder()

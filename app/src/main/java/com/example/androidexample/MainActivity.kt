@@ -25,6 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.androidexample.model.Author
 import com.example.androidexample.network.ExampleApi
@@ -57,15 +58,8 @@ class MainActivity : ComponentActivity() {
 @Preview
 fun AuthorScreen(modifier: Modifier = Modifier.padding(80.dp)) {
 
-    val scope = rememberCoroutineScope()
-    val viewModel = AuthorViewModel()
-    LaunchedEffect(Unit) {
-        scope.launch {
-            viewModel.getAuthor()
-        }
-    }
-    val author by viewModel.authorData
-    AuthorCard(author, modifier = Modifier.padding(16.dp))
+    val authorViewModel: AuthorViewModel = viewModel()
+    AuthorCard(authorViewModel.authorData, modifier = Modifier.padding(16.dp))
 }
 @Composable
 fun AuthorCard(
